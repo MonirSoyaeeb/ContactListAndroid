@@ -1,53 +1,63 @@
 package com.example.contactlistandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
+import com.example.contactlistandroid.adapter.RecylerViewAdapter;
 import com.example.contactlistandroid.data.DatabaseController;
 import com.example.contactlistandroid.model.Contact;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private RecylerViewAdapter recylerViewAdapter;
+    private ArrayList<Contact> contactArrayList;
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.hasFixedSize();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        Contact c = new Contact();
+        c.setName("Babul");
+        c.setPhoneNumber("668547");
+
+
+
+        contactArrayList = new ArrayList<>();
         DatabaseController db = new DatabaseController(MainActivity.this);
 
-       // Log.d("Counter", "onCreate: "+db.getCount());
-
-//        Contact jack = new Contact();
-//
-//        jack.setName("Jack");
-//        jack.setPhoneNumber("123456");
-//
-//        db.addContact(jack);
-
-//        Contact c = db.getContact(1);
-//
-//        c.setName("New Jerrymy");
-//        c.setPhoneNumber("789456");
-//
-//        int updatedConcat = db.updateContact(c);
-//
-//        Log.d("UpdateC", "onCreate: "+updatedConcat);
-
-//        db.deleteContact(c);
+       // db.addContact(c);
 
 
         List<Contact> contactList = db.getAllContact();
 
         for(Contact contact: contactList)
         {
-            Log.d("Main", "onCreate: "+contact.getName());
-            //Log.d("Main", "onCreate: "+contact.getPhoneNumber());
+            contactArrayList.add(contact);
         }
+
+
+
+        // set Adapter
+
+         recylerViewAdapter  = new RecylerViewAdapter(MainActivity.this,contactArrayList);
+
+         recyclerView.setAdapter(recylerViewAdapter);
 
 
 
