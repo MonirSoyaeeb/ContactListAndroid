@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.ContentValues;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 
-import com.example.contactlistandroid.adapter.RecylerViewAdapter;
+import com.example.contactlistandroid.adapter.RecyclerViewAdapter;
 import com.example.contactlistandroid.data.DatabaseController;
 import com.example.contactlistandroid.model.Contact;
 
@@ -19,7 +17,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private RecylerViewAdapter recylerViewAdapter;
+    private RecyclerViewAdapter recylerViewAdapter;
     private ArrayList<Contact> contactArrayList;
     private ArrayAdapter<String> arrayAdapter;
 
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         // set Adapter
 
-         recylerViewAdapter  = new RecylerViewAdapter(MainActivity.this,contactArrayList);
+         recylerViewAdapter  = new RecyclerViewAdapter(MainActivity.this,contactArrayList);
 
          recyclerView.setAdapter(recylerViewAdapter);
 

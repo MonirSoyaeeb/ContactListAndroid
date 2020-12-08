@@ -2,7 +2,6 @@ package com.example.contactlistandroid.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.contactlistandroid.DetailsActivity;
-import com.example.contactlistandroid.MainActivity;
 import com.example.contactlistandroid.R;
 import com.example.contactlistandroid.model.Contact;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class RecylerViewAdapter extends RecyclerView.Adapter<RecylerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private Context context;
     private List<Contact> contactList;
 
-    public RecylerViewAdapter(Context context, List<Contact> contactList) {
+    public RecyclerViewAdapter(Context context, List<Contact> contactList) {
         this.context = context;
         this.contactList = contactList;
     }
